@@ -1,6 +1,6 @@
 # tinysched
 
-This library provides a simple interface to run a single function in the background, repeatedly, at a specified interval.  The function invocations are serial, and executed in a single thread.
+This library provides a simple, dependency-free interface to run a single function in the background, repeatedly, at a specified interval.  The function invocations are serial, and executed in a single thread.
 
 It's really just a little extension for the built-in [sched](https://docs.python.org/3/library/sched.html#sched.scheduler) module.
 
@@ -14,7 +14,7 @@ It's really just a little extension for the built-in [sched](https://docs.python
 ## Usage
 
 ```python
-import tinysched
+from tinysched import scheduler
 from datetime import timedelta
 
 
@@ -22,6 +22,6 @@ def foo():
     print('foo!')
 
 
-cancel_fn = tinysched.repeat(foo, interval=timedelta(seconds=0.1), max_repeats=10) 
+cancel_fn = scheduler.repeat(foo, interval=timedelta(seconds=0.1), max_repeats=10) 
 
 ```
