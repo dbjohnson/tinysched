@@ -42,7 +42,7 @@ def repeat(func, interval=timedelta(seconds=0), max_repeats=None):
     thread.start()
 
     def cancel():
-        nonlocal cancelled
+        global cancelled
         cancelled = True
 
     return cancel
