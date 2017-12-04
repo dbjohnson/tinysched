@@ -6,7 +6,7 @@ It's really just a little extension for the built-in [sched](https://docs.python
 
 [![License](https://img.shields.io/github/license/dbjohnson/tinysched.svg)]()
 [![PyPi](https://img.shields.io/pypi/v/tinysched.svg)](https://pypi.python.org/pypi/tinysched)
-[![Code Climate](https://codeclimate.com/github/dbjohnson/tinysched/badges/gpa.svg)](https://codeclimate.com/github/dbjohnson/tinysched)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f23e49426a5af346f634/maintainability)](https://codeclimate.com/github/dbjohnson/tinysched/maintainability)
 
 ## Installation
 ```pip install tinysched```
