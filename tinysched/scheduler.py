@@ -33,7 +33,7 @@ def repeat(func, interval=timedelta(seconds=0), max_repeats=None):
                     kwargs={'repeats_left': repeats_left - 1}
                 )
 
-    scheduler = sched.scheduler(timefunc=time.monotonic, delayfunc=time.sleep)
+    scheduler = sched.scheduler(timefunc=time.time, delayfunc=time.sleep)
     scheduler.enter(0, 0, repeat)
 
     thread = Thread(
