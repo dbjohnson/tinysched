@@ -29,12 +29,12 @@ def repeat(func, interval=timedelta(seconds=0), max_repeats=None):
                 scheduler.enter(
                     interval.total_seconds(),
                     0,
-                    repeat,
-                    kwargs={'repeats_left': repeats_left - 1}
+                    lambda: repeat(repeats_left - 1),
+                    []
                 )
 
     scheduler = sched.scheduler(timefunc=time.time, delayfunc=time.sleep)
-    scheduler.enter(0, 0, repeat)
+    scheduler.enter(0, 0, repeat, [])
 
     thread = Thread(
         target=lambda: scheduler.run(),
