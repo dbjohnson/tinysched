@@ -39,7 +39,7 @@ def repeat(func, interval=timedelta(seconds=0), max_repeats=None):
     thread = Thread(
         target=lambda: scheduler.run()
     )
-    thread.set_daemon(True)
+    thread.setDaemon(True)
     thread.start()
 
     def cancel():
