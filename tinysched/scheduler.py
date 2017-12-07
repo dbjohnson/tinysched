@@ -42,8 +42,9 @@ def repeat(func, interval=timedelta(seconds=0), max_repeats=None):
     thread.setDaemon(True)
     thread.start()
 
-    def cancel():
+    def cancel(timeout=None):
         global cancelled
         cancelled = True
+        thread.join(timeout)
 
     return cancel

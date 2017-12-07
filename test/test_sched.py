@@ -26,13 +26,5 @@ class TestSched(unittest.TestCase):
             self.assertLessEqual(self.count, r + 1)
             time.sleep(delay)
 
-    def test_cancel(self):
-        delay = 0.01
-        cancel_after_n = 10
-        cancel = scheduler.repeat(self.inc_counter, timedelta(seconds=delay))
-        time.sleep(delay * cancel_after_n)
-        cancel()
-        self.assertLessEqual(self.count, cancel_after_n)
-
     def inc_counter(self):
         self.count += 1
