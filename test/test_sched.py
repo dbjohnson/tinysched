@@ -10,9 +10,6 @@ class TestSched(unittest.TestCase):
         self.count = 0
 
     def test_repeat(self):
-        def foo():
-            self.count += 1
-
         repeats = 3
         scheduler.repeat(self.inc_counter, timedelta(seconds=0), max_repeats=repeats)
         time.sleep(0.1)
@@ -25,6 +22,17 @@ class TestSched(unittest.TestCase):
         for r in range(repeats):
             self.assertLessEqual(self.count, r + 1)
             time.sleep(delay)
+
+    def test_exception_recovery(self):
+        repeats = 3
+
+        def foo():
+            self.count += 1
+            raise RuntimeError('foo!')
+
+        scheduler.repeat(foo, timedelta(seconds=0), max_repeats=repeats)
+        time.sleep(0.1)
+        self.assertEqual(self.count, repeats)
 
     def inc_counter(self):
         self.count += 1

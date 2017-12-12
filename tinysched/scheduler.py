@@ -25,6 +25,9 @@ def repeat(func, interval=timedelta(seconds=0), max_repeats=None):
         if not cancelled and repeats_left != 0:
             try:
                 func()
+            except Exception as e:
+                print('warning - exception encountered in backgrounded function {}'.format(func.__name__))
+                print(e)
             finally:
                 scheduler.enter(
                     interval.total_seconds(),
