@@ -19,7 +19,7 @@ def repeat(func, interval=timedelta(seconds=0), max_repeats=None):
     Return values:
         cancel_fn (function): call this function to cancel repeat loop
     """
-    cancelled = False
+    cancelled = []
 
     def repeat(repeats_left=max_repeats or -1):
         if not cancelled and repeats_left != 0:
@@ -45,9 +45,9 @@ def repeat(func, interval=timedelta(seconds=0), max_repeats=None):
     thread.setDaemon(True)
     thread.start()
 
-    def cancel(timeout=None):
-        global cancelled
-        cancelled = True
+    def cancel(timeout=3):
+        # putting any value in the list will cancel
+        cancelled.append(None)
         thread.join(timeout)
 
     return cancel

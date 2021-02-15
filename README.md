@@ -23,6 +23,8 @@ def foo():
     print('foo!')
 
 
-cancel_fn = scheduler.repeat(foo, interval=timedelta(seconds=0.1), max_repeats=10) 
+cancel_fn = scheduler.repeat(foo, interval=timedelta(seconds=0.1), max_repeats=10)
 
+# manually cancel!
+cancel_fn()
 ```
