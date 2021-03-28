@@ -1,0 +1,15 @@
+version: 2.1
+jobs:
+  test:
+    docker:
+      - image: circleci/python:3.6.12-buster
+    steps:
+      - checkout
+      - run:
+          name: unittest
+          command: python3 -m unittest test/*test.py
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test:
