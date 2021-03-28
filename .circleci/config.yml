@@ -7,9 +7,9 @@ jobs:
       - checkout
       - run:
           name: unittest
-          command: python3 -m unittest test/*test.py
+          command: python3 -m unittest test/test*.py
 workflows:
   version: 2
-  build:
+  test:
     jobs:
       - test
