@@ -34,5 +34,13 @@ class TestSched(unittest.TestCase):
         time.sleep(0.1)
         self.assertEqual(self.count, repeats)
 
+    def test_cancel(self):
+        repeats = 3
+        delay = 0.1
+        cancel_fn = scheduler.repeat(self.inc_counter, timedelta(seconds=delay), max_repeats=repeats)
+        cancel_fn()
+        time.sleep(3)
+        self.assertEqual(self.count, 1)
+
     def inc_counter(self):
         self.count += 1
